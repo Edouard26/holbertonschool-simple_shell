@@ -5,10 +5,11 @@
 #include <sys/wait.h>
 
 #define MAX_COMMAND_LENGTH 100
+#define MAX_ARGS 20
 
 int command_exists(const char *command) 
 {
-	
+
 	char *path = getenv("PATH");
 	char *path_copy = strdup(path);
 	char *dir = strtok(path_copy, ":");
@@ -28,8 +29,12 @@ int command_exists(const char *command)
 int main() {
 	char command[MAX_COMMAND_LENGTH];
 	pid_t pid;
+	char *args[MAX_ARGS];
+	char *token = strtok(command, " ");
+	int arg_count = 0;
 
-	while (1) {
+	while (1)
+{
 		printf(":) ");
 		fflush(stdout);
 		if (fgets(command, sizeof(command), stdin) == NULL) {
@@ -38,8 +43,17 @@ int main() {
 		}
 
 		command[strcspn(command, "\n")] = 0;
+			while (token != NULL && arg_count < MAX_ARGS - 1) {
+				args[arg_count++] = token;
+				token = strtok(NULL, " ");
+			}
+		args[arg_count] = NULL;
 
-		if (!command_exists(command)) {
+		if (arg_count == 0) {
+			continue;
+		}
+
+		if (!command_exists(args[0])) {
 			printf("%s: command not found\n", command);
 			continue;
 		}
