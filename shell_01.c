@@ -26,12 +26,25 @@ int command_exists(const char *command)
 	return (0);
 }
 
+void print_environment() 
+{
+	extern char **environ;
+	char **env = environ;
+
+	while (*env != NULL) {
+		printf("%s\n", *env);
+		env++;
+	}
+}
+
 int main() {
 	char command[MAX_COMMAND_LENGTH];
 	pid_t pid;
 	char *args[MAX_ARGS];
 	char *token = strtok(command, " ");
 	int arg_count = 0;
+	void print_environment();
+
 
 	while (1)
 	{
@@ -55,6 +68,10 @@ int main() {
 		if (strcmp(args[0], "exit") == 0) {
 			printf("Exiting shell...\n");
 			break;
+		}
+		else if (strcmp(args[0], "env") == 0) {
+			print_environment();
+			continue;
 		}
 
 		if (!command_exists(args[0])) {
