@@ -34,7 +34,7 @@ int main() {
 	int arg_count = 0;
 
 	while (1)
-{
+	{
 		printf(":) ");
 		fflush(stdout);
 		if (fgets(command, sizeof(command), stdin) == NULL) {
@@ -43,14 +43,18 @@ int main() {
 		}
 
 		command[strcspn(command, "\n")] = 0;
-			while (token != NULL && arg_count < MAX_ARGS - 1) {
-				args[arg_count++] = token;
-				token = strtok(NULL, " ");
-			}
+		while (token != NULL && arg_count < MAX_ARGS - 1) {
+			args[arg_count++] = token;
+			token = strtok(NULL, " ");
+		}
 		args[arg_count] = NULL;
 
 		if (arg_count == 0) {
 			continue;
+		}
+		if (strcmp(args[0], "exit") == 0) {
+			printf("Exiting shell...\n");
+			break;
 		}
 
 		if (!command_exists(args[0])) {
