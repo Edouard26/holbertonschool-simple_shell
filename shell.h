@@ -11,4 +11,3 @@
 int command_exists(const char *command);
 void print_environment();
 void execute_command(char *args[]);
-int read_line(char **line, size_t *len);
