@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * execute_command -  forks a child process to execute the command
+ * @args: array that specify the command and its arguments
+ */
+
 void execute_command(char *args[]) 
 {
 	pid_t pid = fork();
