@@ -8,8 +8,8 @@ int main() {
 	size_t command_size = 0;
 	char *args[MAX_ARGS];
 	int arg_count;
-	ssize_t read_bytes = getline(&command, &command_size, stdin);
-	char *token = strtok(command, " ");
+	ssize_t read_bytes;
+	char *token;
 
 	if (isatty(STDIN_FILENO)) 
 	{
@@ -22,15 +22,13 @@ int main() {
 	while (1) {
 		printf(":) ");
 		fflush(stdout);
-
-		if (read_bytes == -1) {
-			printf("\n");
-			break;
-		}
+		read_bytes = getline(&command, &command_size, stdin);
+	
 
 		command[read_bytes - 1] = '\0';
 
 		arg_count = 0;
+		token = strtok(command, " ");
 		while (token != NULL && arg_count < MAX_ARGS - 1) {
 			args[arg_count++] = token;
 			token = strtok(NULL, " ");
