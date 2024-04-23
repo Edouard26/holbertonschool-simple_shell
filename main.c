@@ -28,10 +28,10 @@ int main() {
 		command[read_bytes - 1] = '\0';
 
 		arg_count = 0;
-		token = strtok(command, " ");
+		token = strtok(command, "\t\n ");
 		while (token != NULL && arg_count < MAX_ARGS - 1) {
 			args[arg_count++] = token;
-			token = strtok(NULL, " ");
+			token = strtok(NULL, "\t\n ");
 		}
 		args[arg_count] = NULL;
 
@@ -46,7 +46,7 @@ int main() {
 			continue;
 		}
 
-		if (!command_exists(args[0])) {
+		if (command_exists(args[0]) == 0 ) {
 			printf("%s: command not found\n", args[0]);
 			continue;
 		}

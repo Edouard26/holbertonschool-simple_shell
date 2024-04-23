@@ -7,7 +7,7 @@
  * Return: 1 if the command exists, 0 otherwise
  */
 
-int command_exists(const char *command)
+int command_exists(char *command)
 {
 	char *path = getenv("PATH");
 	char *path_copy = strdup(path);
@@ -16,9 +16,15 @@ int command_exists(const char *command)
 	while (dir != NULL)
 	{
 		char command_path[MAX_COMMAND_LENGTH];
-		snprintf(command_path, sizeof(command_path), "%s/%s", dir, command);
+
+		strcpy(command_path, dir);
+		strcat(command_path, "/");
+		strcat(command_path, command);
+		
 		if (access(command_path, X_OK) == 0)
+
 		{
+			printf("%s\n", command_path);
 			free(path_copy);
 			return (1);
 		}

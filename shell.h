@@ -8,6 +8,8 @@
 #define MAX_COMMAND_LENGTH 100
 #define MAX_ARGS 20
 
-int command_exists(const char *command);
+int command_exists(char *command);
 void print_environment();
-void execute_command(char *args[]);
+void execute_command(char **args);
+char *_getenv(char **env, const char *name);
+extern char **environ;
