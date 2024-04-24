@@ -9,7 +9,7 @@
 
 int command_exists(char *command)
 {
-	char *path = getenv("PATH");
+	char *path = _getenv(environ, "PATH");
 	char *path_copy = strdup(path);
 	char *dir = strtok(path_copy, ":");
 
@@ -24,8 +24,7 @@ int command_exists(char *command)
 		if (access(command_path, X_OK) == 0)
 
 		{
-			printf("%s\n", command_path);
-			free(path_copy);
+			/**free(path_copy);*/
 			return (1);
 		}
 		dir = strtok(NULL, ":");

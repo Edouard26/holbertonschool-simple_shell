@@ -7,12 +7,12 @@
 void print_environment(void)
 {
 	extern char **environ;
-	char **env = environ;
+	char **i = environ;
 
-	while (*env != NULL)
+	while (*i != NULL)
 	{
-		printf("%s\n", *env);
-		env++;
+		printf("%s\n", *i);
+		i++;
 	}
 }
 
