@@ -1,0 +1,36 @@
+.SH NAME
+shell \- Simple Shell
+
+.SH SYNOPSIS
+.B shell
+
+.SH DESCRIPTION
+The shell utility reads commands from the standard input and executes them.
+
+.PP
+The shell supports the following built-in commands:
+.TP
+.BR exit
+Exit the shell.
+.TP
+.BR env
+Print the environment variables.
+
+.SH OPTIONS
+None.
+
+.SH SEE ALSO
+.BR exec (3),
+.BR fork (2),
+.BR waitpid (2),
+.BR getenv (3),
+.BR access (2).
+
+.SH AUTHOR
+Your Name (Your Email)
+
+.SH BUGS
+No known bugs.
+
+.SH COPYRIGHT
+This is free and unencumbered software released into the public domain.
