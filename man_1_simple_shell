@@ -1,36 +1,61 @@
+.\" Manpage for simple_shell
+.TH simple_shell  "April 2024" "User Commands"
+
 .SH NAME
-shell \- Simple Shell
+simple_shell \- Holberton School project shell
 
 .SH SYNOPSIS
-.B shell
+.B #include <shell.h>
+.sp
+.B 
+int main(__attribute__((unused)) int ac, char **av);
+char *read_line(void);
+int built_in(char **command);
+void handle_built_in(char **command, int *status);
+void hsh_exit(char **cmd, int *status);
+char *_path(char *command);
+char *get_env(char *var);
+char *_strdup(const char *s);
+char **_str(char *line);
+void free_array(char **command);
+int exec(char **arr, char **av, int idx);
+int main(__attribute__((unused)) int ac, char **av);
+void hsh_env(char **cmd, int *status);
 
 .SH DESCRIPTION
-The shell utility reads commands from the standard input and executes them.
+simple_shell is a basic Unix shell developed as a project for Holberton School. It provides a command-line interface for users to interact with the operating system.
 
-.PP
-The shell supports the following built-in commands:
-.TP
-.BR exit
-Exit the shell.
-.TP
-.BR env
-Print the environment variables.
+.SH COMMANDS
+The shell supports various standard shell commands, including and not limited to:
 
-.SH OPTIONS
-None.
+- cd: Change directory
+- ls: List directory contents
+- ls -l: Give a detail for the content of the directory
+- pwd: Print current working directory
+- echo: Display a message
+- exit: Exit the shell
 
-.SH SEE ALSO
-.BR exec (3),
-.BR fork (2),
-.BR waitpid (2),
-.BR getenv (3),
-.BR access (2).
+.SH EXAMPLES
 
-.SH AUTHOR
-Edouard Halimi (8801@holbertonstudents.com)
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 exevce.c free.c read.c getenv.c path.c shell.h strdup.c token.c simple_shell.c build.c -o hsh
+./hsh
+$ ls
+AUTHORS    build.c   free.c    hsh                 path.c  shell.h         strdup.c
+README.md  exevce.c  getenv.c  man_1_simple_shell  read.c  simple_shell.c  token.c
+$ echo Hello, world !
+Hello, world !
+$ cd 
+$ pwd
+/root/holbertonschool-simple_shell
+$ exit
 
-.SH BUGS
-No known bugs.
+.SH DATE
 
-.SH COPYRIGHT
-This is free and unencumbered software released into the public domain.
+April 26, 2024
+
+.SH BUGS 
+No know bugs
+
+.SH AUTHORS
+
+Gao
