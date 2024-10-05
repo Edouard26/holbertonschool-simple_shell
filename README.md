@@ -218,6 +218,3 @@ But also in non-interactive mode:
 No know Bugs
 
 # Flowchart
-Authors
-
-## Gao
